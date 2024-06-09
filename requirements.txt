@@ -1,0 +1,6 @@
+requests
+pandas
+opencv-python
+jsonlines
+tqdm
+pytz
