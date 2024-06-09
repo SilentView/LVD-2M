@@ -101,6 +101,7 @@ download_videos_release.py \
 
 Video clips in LVD-2M are scene-cut-free and **at least 10s long**, accompanied by detailed and temporally dense captions. The displayed captions are from the `refined_caption` field.
 
+*[Link](https://ic-cv-long-videos.s3.ap-northeast-2.amazonaws.com/LVD-2M/data/preview_videos.zip) for original preview videos without compression loss.*
 
 <table class="center">
     <tr>
