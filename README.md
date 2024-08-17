@@ -110,11 +110,13 @@ We don't provide the video data directly, instead we provide ways to download th
 Although HDVG dataset is also from youtube, its format is different from other youtube scraped datasets, so it is treated seperately.
 
 
-### Tenchnical suggestions for downloading videos from YouTube
+### Technical suggestions for downloading videos from YouTube
 
 We use a modified version of [pytube](https://github.com/pytube/pytube) to download the videos. It supports downloading videos from youtube in a parallel, fast and stable way (using multiprocessing and multiple accounts). For more details, check the `download_videos_release.py` script.
 
 Overally, users are suggested to prepare multiple google accounts, run `python download_videos_release.py --reset_auth` for authorization and run the downloading scripts. 
+
+We implemented the mechanism of dividing the request loads to multiple accounts. The processes launched on all the nodes will be evenly assigned to different accounts.
 
 *Note: the code for downloading videos from youtube could fail due to variation in youtube api behaviors, you can check the issues in [pytube](https://github.com/pytube/pytube) for updates.*
 
