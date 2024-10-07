@@ -1,6 +1,29 @@
-# LVD-2M: A Long-take Video Dataset with Temporally Dense Captions
+# <img src="assets/images/lvd2m_icon_blue.png" style="vertical-align: -10px;" :height="50px" width="50px"> LVD-2M: A Long-take Video Dataset with Temporally Dense Captions
 
-Official Github repository of LVD-2M.
+Official Github repository of <br>
+[LVD-2M: A Long-take Video Dataset with Temporally Dense Captions]()
+
+[Tianwei Xiong](https://github.com/SilentView)<sup>1,\*</sup>,
+[Yuqing Wang](https://scholar.google.com/citations?user=QC7nNe0AAAAJ&hl=zh-CN)<sup>1,\*</sup>,
+[Daquan Zhou](https://zhoudaquan.github.io/homepage.io/index.html)<sup>2,†</sup>,
+[Zhijie Lin](https://scholar.google.com/citations?user=xXMj6_EAAAAJ&hl=zh-CN)<sup>2</sup>,
+[Jiashi Feng](https://sites.google.com/site/jshfeng/home)<sup>2</sup>,
+[Xihui Liu](https://xh-liu.github.io/)<sup>1,✉</sup>
+
+<sup>1</sup>The University of Hong Kong, <sup>2</sup>ByteDance  
+<small>\*Equal contribution. †Project lead. <sup>✉</sup>Corresponding author.</small>
+
+*NeurIPS 2024 Track Datasets and Benchmarks*
+
+
+<!-- [![arXiv](https://img.shields.io/badge/arXiv-2402.19479-b31b1b.svg)]() -->
+[![Project Page](https://img.shields.io/badge/Project-Website-green)](https://silentview.github.io/LVD-2M/)
+
+## News
+
+**[2024/10/]** The dataset, the research paper and the [project page](https://silentview.github.io/LVD-2M/) are released!
+
+
 
 ## Introduction
 LVD-2M is a dataset featuring: 
@@ -9,53 +32,12 @@ LVD-2M is a dataset featuring:
 3. large motion and diverse contents 
 4. temporally dense captions. 
 
-## A Preview of LVD-2M
+## Dataset Statistics
+![alt text](assets/images/basic_statistics.png)
 
-Video clips in LVD-2M are scene-cut-free and **at least 10s long**, accompanied by detailed and temporally dense captions. The displayed captions are from the `refined_caption` field.
 
-*[Link](https://ic-cv-long-videos.s3.ap-northeast-2.amazonaws.com/LVD-2M/data/preview_videos.zip) for original preview videos without compression loss.*
 
-<table class="center">
-    <tr>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/BlUTkf-_GTg.66_3.gif"></td>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/NDDDdh8-fZE.63_1.gif"></td>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/450mJ-hwKWk.6_1.gif"></td>
-    </tr>
-    <tr style="text-align: center;">
-      <td width=33.3% style="border: none">The video captures a cyclist performing a sequence of maneuvers at a skate park. The cyclist, wearing a helmet, is seen preparing to descend a ramp, executing the descent with speed and control, and landing safely at the bottom. The setting is consistent throughout, with the skate park visible in the background and the lighting suggesting a late afternoon or early evening timeframe. The video showcases the skill and excitement involved in cycling at a skate park.</td>
-      <td width=33.3% style="border: none">The video depicts a baby in a white onesie exploring its surroundings. The baby is seated and then stands, gripping a white rail or handle. The baby's facial expressions suggest a curious and playful mood as it interacts with the object. The setting appears to be a child-friendly room with a bed and toys visible in the background. The camera maintains a consistent perspective, focusing on the baby's actions and expressions throughout the sequence.
-      </td>
-      <td width=33.3% style="border: none">The video captures an intense basketball game or practice session on an indoor court with distinctive orange, black, purple, and white color schemes. The players, dressed in athletic attire, engage in various actions such as dribbling, shooting, passing, defending, and interacting with each other. The court, equipped with multiple hoops, serves as a dynamic backdrop for the ongoing game, highlighting the competitive and active nature of the sport.
-      </td>
-    </tr>
-  </table>
-
-  <table class="center">
-    <tr>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/QSsYngna6Rw.3_1.gif"></td>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/-RCZ_gmjtLU.14_2.gif"></td>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/LhX01PT_Xmc.22_0.gif"></td>
-    </tr>
-    <tr style="text-align: center;">
-      <td width=33.3% style="border: none">A series of moments from a horse jumping competition are captured, featuring a rider in traditional equestrian attire navigating a course with obstacles. The rider and horse are seen in various stages of the competition: preparing for a jump, in mid-air over an obstacle, and landing after a successful jump. The horse and rider demonstrate focus, balance, and athleticism throughout the course. The competition takes place in an outdoor setting, marked by red and white striped poles, indicative of a dedicated equestrian facility.</td>
-      <td width=33.3% style="border: none">The video depicts a snowboarder performing various maneuvers on a snow-covered slope. The snowboarder, dressed in a red jacket and black pants, is seen progressing from a crouched position to mid-air jumps and landings, all captured from a consistent side-angle perspective. The mountainous landscape with trees suggests the setting is a ski resort or mountainous area suitable for snowboarding, with clear skies and natural lighting.</td>
-      <td width=33.3% style="border: none">The video depicts a lively outdoor market scene in a narrow alleyway. The setting features brick buildings, market stalls with umbrellas, and a bustling crowd of casually dressed individuals. The market appears to be a busy, community-oriented event, such as a local farmers' market or street fair. The video captures the energy and social interaction of the market, showcasing the variety of goods and services available, as well as the movement and engagement of the people within the space.</td>
-    </tr>
-  </table>
-
-  <table class="center">
-    <tr>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/IKNKEewb_7o.62_1.gif"></td>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/dCcGU9o5ryk.105_0.gif"></td>
-      <td width=33.3% style="border: none"><img src="./assets/gifs/SoPyKYtEel0.4_0.gif"></td>
-    </tr>
-    <tr style="text-align: center;">
-      <td width=33.3% style="border: none">The video depicts a first-person perspective of a person riding a mountain bike on a dirt trail. The camera focuses on the handlebars, capturing the rider's hands gripping them tightly as they navigate turns and changes in the terrain. The blurred background suggests a natural, outdoor setting, likely a mountainous or hilly area, characteristic of a mountain biking trail. The video conveys a sense of speed and action through the changing angles of the handlebars and the continuous motion.</td>
-      <td width=33.3% style="border: none">The video depicts a person learning to snowboard at an indoor snowboarding facility. The learner is wearing a blue jacket and is being assisted by another individual, both wearing snowboarding gear including helmets and goggles. The video shows the learner's progress, starting with the person holding the instructor's hand for support, then leaning forward as they begin to fall, and eventually falling onto the snow-covered ground, with the instructor remaining nearby to offer guidance.</td>
-      <td width=33.3% style="border: none">A video of a motorcycle ride on a winding road under a clear blue sky. The video is captured from the perspective of the motorcycle rider, with the handlebars and mirrors visible in each frame. The road curves gently to the left, and the background remains consistent throughout the sequence.</td>
-    </tr>
-  </table>
-
+## Dataset Access
 
 ### Quick Walk Through for 100 Randomly Sampled Videos
 
@@ -66,9 +48,8 @@ We note that even a direct non-cherry picking random sample already presents dec
 
 *We will remove the video samples from our dataset / demonstration if you find them inappropriate. Please contact xiongt20 at gmail dot com for the request.*
 
+### File Downloading
 
-
-## Dataset Access
 We provide three splits of our video dataset according to their sources: Youtube, [HDVG](https://github.com/daooshee/HD-VG-130M) and [WebVid](https://github.com/m-bain/webvid). 
 
 You can download the three files from the links
@@ -99,7 +80,34 @@ Each row in the csv file corresponds to a video clip, the columns are:
 - `scene_cut`: (Trivial content) Special record for HDVG data format.
 
 
+### Environment
+```
+conda create --name lvd2m python=3.9
+conda activate lvd2m
 
+# install ffmpeg
+sudo apt-get install ffmpeg
+
+pip install -r requirements.txt
+```
+
+### Video Downloading Script
+To download videos from a csv file, run the following command:
+```
+${PYTHON_PATH} \
+download_videos_release.py \
+--bsz=96 \
+--resolution=720p \
+--node_num=1 \
+--node_id=0 \
+--process_num=96 \
+--workdir=cache/download_cache \
+--out_dir="dataset/videos" \
+--dataset_key="hdvg" \
+--multiprocess
+```
+
+*Your google accounts may be banned or suspended for too many requets. So you are suggested to use multiple accounts. Set the `ACCOUNT_NUM` in `download_videos_release.py` to specify.*
 
 <details>
 <summary>Details for Video Downloading</summary>
@@ -128,39 +136,7 @@ We **don't provide** code for downloading videos from **webvid** (whose videos a
 </details>
 
 
-### Environment
-```
-conda create --name lvd2m python=3.9
-conda activate lvd2m
 
-# install ffmpeg
-sudo apt-get install ffmpeg
-
-pip install -r requirements.txt
-```
-
-### Downloading Script
-To download videos from a csv file, run the following command:
-```
-${PYTHON_PATH} \
-download_videos_release.py \
---bsz=96 \
---resolution=720p \
---node_num=1 \
---node_id=0 \
---process_num=96 \
---workdir=cache/download_cache \
---out_dir="dataset/videos" \
---dataset_key="hdvg" \
---multiprocess
-```
-
-*Your google accounts may be banned or suspended for too many requets. So you are suggested to use multiple accounts. Set the `ACCOUNT_NUM` in `download_videos_release.py` to specify.*
-
-
-
-## Dataset Statistics
-![alt text](assets/images/image.png)
 
 
 ## License
