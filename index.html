@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="LVD-2M: A Long-take Video Dataset with Temporally Dense Captions">
+  <meta name="keywords" content="Long Video Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LVD-2M: A Long-take Video Dataset with Temporally Dense Captions</title>
+
+  <!-- Google tag (gtag.js) -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCJY998LVV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-QCJY998LVV');
+  </script> -->
+  
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+  <style>
+
+    .video-container {
+      margin-bottom: 20px; /* Space between videos */
+    }
+    video {
+      width: auto; /* Make videos responsive */
+      height: auto;
+      border-radius: 8px; /* Rounded corners for aesthetics */
+    }
+
+    .card-image video {
+      width: 150%;
+      height: 150%;
+      object-fit: cover;
+    }
+    .gif-card .card-image {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .gif-card .card-image img {
+      object-fit: cover;
+    }
+    .gif-card .card-content {
+      width: 100%;
+    }
+    .smaller-text {
+      font-size: 0.8rem;
+    }
+    .smallest-text {
+      font-size: 0.5rem;
+    }
+    .section-divider {
+    border-top: 1px solid #dbdbdb;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .wider-video-container {
+    max-width: 1600px !important;  /* Increase this value to make the container wider */
+    width: 90% !important;  /* This ensures some margin on very wide screens */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wider-column {
+    padding: 0.75rem;
+  }
+    
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <h1 class="title is-1 publication-title"><img id="logo" width="6%" src="./static/images/lvd_2m_icon.png"> LVD-2M: <br>
+             A Long-take Video Dataset with Temporally Dense Captions
+          </h1>
+          <font size="4"><span style="color: red; font-weight: bold;">NeurIPS 2024 D&amp;B Track</span></font>
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block has-text-centered">
+              <a href="https://github.com/SilentView">Tianwei Xiong</a><sup>1,*</sup>,
+              <a href="https://scholar.google.com/citations?user=QC7nNe0AAAAJ&hl=zh-CN">Yuqing Wang</a><sup>1,*</sup>,
+              <a href="https://zhoudaquan.github.io/homepage.io/index.html">Daquan Zhou</a><sup>2,†</sup>,
+              <a href="https://scholar.google.com/citations?user=xXMj6_EAAAAJ&hl=zh-CN">Zhijie Lin</a><sup>2</sup><br>
+              <a href="https://sites.google.com/site/jshfeng/home">Jiashi Feng</a><sup>2</sup>,
+              <a href="https://xh-liu.github.io/">Xihui Liu</a><sup>1,<i class="fas fa-envelope"></i></sup><br>
+              <sup>1</sup>The University of Hong Kong, <sup>2</sup>ByteDance<br>
+              <small>*Equal contribution. †Project lead. <sup><i class="fas fa-envelope"></i></sup>Corresponding author.</small>
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/SilentView/LVD-2M"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container" style="max-width: 960px;">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/450mJ-hwKWk.6_1_c.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures an intense basketball game or practice session on an indoor court with distinctive orange, black, purple, and white color schemes. The players, dressed in athletic attire, engage in various actions such as dribbling, shooting, passing, defending, and interacting with each other. The court, equipped with multiple hoops, serves as a dynamic backdrop for the ongoing game, highlighting the competitive and active nature of the sport.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/-RCZ_gmjtLU.14_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a snowboarder performing various maneuvers on a snow-covered slope. The snowboarder, dressed in a red jacket and black pants, is seen progressing from a crouched position to mid-air jumps and landings, all captured from a consistent side-angle perspective. The mountainous landscape with trees suggests the setting is a ski resort or mountainous area suitable for snowboarding, with clear skies and natural lighting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/I-AmF6PRnOw.17_1_c.mov " type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>A person wearing a scuba diving suit and equipment is shown holding a large, vibrant orange fish with a prominent dorsal fin, likely a type of grouper or snapper, in a clear blue underwater environment. The video appears to be focused on the diver's interaction with the marine life, possibly for educational or recreational purposes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/BlUTkf-_GTg.66_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures a cyclist performing a sequence of maneuvers at a skate park. The cyclist, wearing a helmet, is seen preparing to descend a ramp, executing the descent with speed and control, and landing safely at the bottom. The setting is consistent throughout, with the skate park visible in the background and the lighting suggesting a late afternoon or early evening timeframe. The video showcases the skill and excitement involved in cycling at a skate park.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/NDDDdh8-fZE.63_1_c.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a baby in a white onesie exploring its surroundings. The baby is seated and then stands, gripping a white rail or handle. The baby's facial expressions suggest a curious and playful mood as it interacts with the object. The setting appears to be a child-friendly room with a bed and toys visible in the background. The camera maintains a consistent perspective, focusing on the baby's actions and expressions throughout the sequence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/IKNKEewb_7o.62_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a first-person perspective of a person riding a mountain bike on a dirt trail. The camera focuses on the handlebars, capturing the rider's hands gripping them tightly as they navigate turns and changes in the terrain. The blurred background suggests a natural, outdoor setting, likely a mountainous or hilly area, characteristic of a mountain biking trail. The video conveys a sense of speed and action through the changing angles of the handlebars and the continuous motion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/dCcGU9o5ryk.105_0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a person learning to snowboard at an indoor snowboarding facility. The learner is wearing a blue jacket and is being assisted by another individual, both wearing snowboarding gear including helmets and goggles. The video shows the learner's progress, starting with the person holding the instructor's hand for support, then leaning forward as they begin to fall, and eventually falling onto the snow-covered ground, with the instructor remaining nearby to offer guidance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/SoPyKYtEel0.4_0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>A video of a motorcycle ride on a winding road under a clear blue sky. The video is captured from the perspective of the motorcycle rider, with the handlebars and mirrors visible in each frame. The road curves gently to the left, and the background remains consistent throughout the sequence.</p>
+              </div>
+            </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The efficacy of video generation models heavily depends on the quality of their training datasets. Most previous video generation models are trained on short video clips, while recently there has been increasing interest in training long video generation models directly on longer videos. However, the lack of such high-quality long videos impedes the advancement of long video generation. To promote research in long video generation, we desire a new dataset with four key features essential for training long video generation models: (1) long videos covering at least 10 seconds, (2) long-take videos without cuts, (3) large motion and diverse contents, and (4) temporally dense captions. To achieve this, we introduce a new pipeline for selecting high-quality long-take videos and generating temporally dense captions. Specifically, we define a set of metrics to quantitatively assess video quality including scene cuts, dynamic degrees, and semantic-level quality, enabling us to filter high-quality long-take videos from a large amount of source videos. Subsequently, we develop a hierarchical video captioning pipeline to annotate long videos with temporally-dense captions. With this pipeline, we curate the first long-take video dataset, LVD-2M, comprising 2 million long-take videos, each covering more than 10 seconds and annotated with temporally dense captions. 
+            We further validate the effectiveness of LVD-2M by fine-tuning video generation models to generate long videos with dynamic motions.
+            We believe our work will significantly contribute to future research in long video generation.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Framework. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Data Pipeline</h2>
+        <div class="content has-text-centered">
+          <img src="static/images/pipeline.png" alt="Framework" width="100%">
+        </div>
+        <div class="content has-text-centered">
+          <p>
+          Video filtering process. Our video filtering process employs multiple criteria to select high-quality, dynamic, and long-take videos from four source datasets.
+          </p>
+        </div>
+
+        <div class="content has-text-centered">
+          <img src="static/images/caption_process.png" alt="Caption Framework" width="100%">
+        </div>
+        <div class="content has-text-centered">
+          <p>
+            Hierarchical video captioning process. First, we split the long video into 30-second clips and compose them into image grids. Then, we use the <a href="https://huggingface.co/llava-hf/llava-v1.6-34b-hf" title="LLaVA-1.6-34B model">LLaVA-1.6-34B model</a> to generate captions for each image grid. Finally, we use the <a href=="https://www.anthropic.com/news/claude-3-haiku">Claude3-Haiku model</a> to refine and merge these captions into the final complete caption for the whole video.
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+    <!--/ Framework. -->
+  </div>
+</section>
+
+
+<section class="hero is-light is-small" id="Dataset Title">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2">
+      <img src="./static/images/lvd_2m_icon.png" style="width:6%;vertical-align: middle" alt="Logo">
+      <span style="vertical-align: middle">LVD-2M Dataset Statistics</span>
+    </h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+        <!-- <h2 class="title is-3">Abstract</h2> -->
+    <img src="static/images/basic_statistics.png" alt="Framework" width="120%">
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Comparing to Other Datasets</h2>
+        <img src="static/images/radar chart.png" alt="Framework" width="90%">
+        <div class="content has-text-justified">
+          <p>
+              We demonstrate 5 metrics, including the long-take rate measured by human raters, caption length for the average caption word count, dynamic degree which is the average of human rated 1$\sim$3 dynamic score, median video clip length and the average optical flow magnitude.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero is-light is-small" id="Dataset Title">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2">
+      <img src="./static/images/lvd_2m_icon.png" style="width:6%;vertical-align: middle" alt="Logo">
+      <span style="vertical-align: middle">LVD-2M for Finetuning <br> Video Generation Models</span>
+    </h1>
+  </div>
+</section>
+
+<style>
+  table {
+    width: 90%;
+    /* center */
+    margin: 0 auto; /* centers the table horizontally */
+    border-collapse: collapse;
+    text-align: center;
+  }
+  th, td {
+    border: 1px solid black;
+  }
+  colgroup col {
+    width: 11.11%; /* 100% divided by 9 columns */
+  }
+</style>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-3">Finetuning a T2V Diffusion Model</h2>
+    </div>
+
+      <!-- First table -->
+      <table>
+        <colgroup>
+          <col span="1" style="width: 11.11%;">
+          <col span="8" style="width: 11.11%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Finetuning Dataset</th>
+            <th>Subject Consistency</th>
+            <th>Background Consistency</th>
+            <th>Temporal Flickering</th>
+            <th>Motion Smoothness</th>
+            <th>Dynamic Degree</th>
+            <th>Aesthetic Quality</th>
+            <th>Imaging Quality</th>
+            <th>Object Class</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WebVid-10M</td>
+            <td>95.81%</td>
+            <td><strong>98.02%</strong></td>
+            <td><strong>98.00%</strong></td>
+            <td>97.87%</td>
+            <td>20.00%</td>
+            <td><strong>58.02%</strong></td>
+            <td><strong>72.63%</strong></td>
+            <td>76.95%</td>
+          </tr>
+          <tr>
+            <td>LVD-2M</td>
+            <td><strong>96.12%</strong></td>
+            <td>96.92%</td>
+            <td>97.44%</td>
+            <td><strong>98.43%</strong></td>
+            <td><u><strong>28.06%</strong></u></td>
+            <td>57.56%</td>
+            <td>70.72%</td>
+            <td><u><strong>86.93%</strong></u></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Second table -->
+      <table style="margin-top: 20px;">
+        <colgroup>
+          <col span="1" style="width: 11.11%;">
+          <col span="8" style="width: 11.11%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Finetuning Dataset</th>
+            <th>Multiple Objects</th>
+            <th>Human Action</th>
+            <th>Color</th>
+            <th>Spatial Relationship</th>
+            <th>Scene</th>
+            <th>Appearance Style</th>
+            <th>Temporal Style</th>
+            <th>Overall Consistency</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WebVid-10M</td>
+            <td><strong>26.02%</strong></td>
+            <td>61.40%</td>
+            <td>75.51%</td>
+            <td>51.06%</td>
+            <td>29.19%</td>
+            <td>20.12%</td>
+            <td>19.34%</td>
+            <td><strong>21.43%</strong></td>
+          </tr>
+          <tr>
+            <td>LVD-2M</td>
+            <td>22.76%</td>
+            <td><u><strong>76.20%</strong></u></td>
+            <td><strong>79.32%</strong></td>
+            <td><strong>51.40%</strong></td>
+            <td><strong>32.95%</strong></td>
+            <td><strong>20.60%</strong></td>
+            <td><strong>20.25%</strong></td>
+            <td>21.29%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="column has-text-centered">
+        VBench evaluation results for two T2V diffusion models finetuned on LVD-2M and WebVid-10M separately, from the same base model.
+        Finetuning on LVD-2M leads to more than <strong>8%</strong> performance improvement than WebVid-10M for <strong>Dynamic Degree</strong>, <strong>Object Class</strong> and <strong>Human Action</strong>.
+      </div>
+
+
+      <img src="static/images/t2v_diffusion_cmp.jpg" alt="Framework" width="100%">
+
+      <div class="column has-text-centered">
+      After finetuning a T2V diffusion model on LVD-2M, the videos are more dynamic, and the actions and objects in the videos are more reasonable, in contrast to finetuning on WebVid-10M.
+      </div>
+
+
+      <div class="section-divider"></div>
+
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Finetuning a Diffusion I2V Model <br> and a LM-based T2V Model</h2>
+      </div>
+
+      <img src="static/images/finetune_user_study.png" alt="user study" width="100%">
+
+      <div class="column has-text-centered">
+        Human evaluation of generated videos by baseline v.s. fine-tuned models. We finetune both a diffusion-based I2V model and a LM-based T2V model on LVD-2M. Compared to the pretrained model, the finetuned models can generate more dynamic videos.
+      </div>
+  
+
+</div>
+</section>
+
+
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container" style="max-width: 256px;" >
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="column" style="max-width: 256px;">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/t2v_diffusion_samples/webvid_10m/video, swon,rcn,a blue fishing boat is navigating in the ocean next to a cruise ship-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+              <video controls autoplay loop muted>
+                <source src="videos/t2v_diffusion_samples/lvd_2m/video, swon,rcn,a blue fishing boat is navigating in the ocean next to a cruise ship-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures an </p>
+              </div>
+            </div>
+
+            <div class="card-image"></div>
+              <video controls autoplay loop muted>
+                <source src="videos/t2v_diffusion_samples/webvid_10m/video, swon,rcn,a blue fishing boat is navigating in the ocean next to a cruise ship-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+              <video controls autoplay loop muted>
+                <source src="videos/t2v_diffusion_samples/lvd_2m/video, swon,rcn,a blue fishing boat is navigating in the ocean next to a cruise ship-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures an </p>
+              </div>
+          </div>
+          </div>
+        </div>
+
+
+        <div class="column" style="max-width: 256px;">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/t2v_diffusion_samples/webvid_10m/video, swon,rcn,a blue train traveling through a lush green area-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+              <video controls autoplay loop muted>
+                <source src="videos/t2v_diffusion_samples/lvd_2m/video, swon,rcn,a blue train traveling through a lush green area-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures an </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/-RCZ_gmjtLU.14_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a snowboarder performing various maneuvers on a snow-covered slope. The snowboarder, dressed in a red jacket and black pants, is seen progressing from a crouched position to mid-air jumps and landings, all captured from a consistent side-angle perspective. The mountainous landscape with trees suggests the setting is a ski resort or mountainous area suitable for snowboarding, with clear skies and natural lighting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/I-AmF6PRnOw.17_1_c.mov " type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>A person wearing a scuba diving suit and equipment is shown holding a large, vibrant orange fish with a prominent dorsal fin, likely a type of grouper or snapper, in a clear blue underwater environment. The video appears to be focused on the diver's interaction with the marine life, possibly for educational or recreational purposes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/BlUTkf-_GTg.66_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures a cyclist performing a sequence of maneuvers at a skate park. The cyclist, wearing a helmet, is seen preparing to descend a ramp, executing the descent with speed and control, and landing safely at the bottom. The setting is consistent throughout, with the skate park visible in the background and the lighting suggesting a late afternoon or early evening timeframe. The video showcases the skill and excitement involved in cycling at a skate park.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/NDDDdh8-fZE.63_1_c.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a baby in a white onesie exploring its surroundings. The baby is seated and then stands, gripping a white rail or handle. The baby's facial expressions suggest a curious and playful mood as it interacts with the object. The setting appears to be a child-friendly room with a bed and toys visible in the background. The camera maintains a consistent perspective, focusing on the baby's actions and expressions throughout the sequence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/IKNKEewb_7o.62_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a first-person perspective of a person riding a mountain bike on a dirt trail. The camera focuses on the handlebars, capturing the rider's hands gripping them tightly as they navigate turns and changes in the terrain. The blurred background suggests a natural, outdoor setting, likely a mountainous or hilly area, characteristic of a mountain biking trail. The video conveys a sense of speed and action through the changing angles of the handlebars and the continuous motion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/dCcGU9o5ryk.105_0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a person learning to snowboard at an indoor snowboarding facility. The learner is wearing a blue jacket and is being assisted by another individual, both wearing snowboarding gear including helmets and goggles. The video shows the learner's progress, starting with the person holding the instructor's hand for support, then leaning forward as they begin to fall, and eventually falling onto the snow-covered ground, with the instructor remaining nearby to offer guidance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/SoPyKYtEel0.4_0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>A video of a motorcycle ride on a winding road under a clear blue sky. The video is captured from the perspective of the motorcycle rider, with the handlebars and mirrors visible in each frame. The road curves gently to the left, and the background remains consistent throughout the sequence.</p>
+              </div>
+            </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@article{xiong2024lvd2m,
+      title={LVD-2M: A Long-take Video Dataset with Temporally Dense Captions}, 
+      author={Tianwei Xiong and Yuqing Wang and Daquan Zhou and Zhijie Lin and Jiashi Feng and Xihui Liu},
+      year={2024},
+      journal={}
+}
+</code></pre>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The template is borrowed from <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
