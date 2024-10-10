@@ -17,6 +17,8 @@
   
     gtag('config', 'G-QCJY998LVV');
   </script> -->
+
+  <!-- https://youtu.be/EyOJ1onA-Qs -->
   
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -37,7 +39,59 @@
 
 
   <style>
+  .details-block {
+    max-width: 1000px; /* Increased width */
+    margin: 30px auto; /* Increased margin */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px; /* Increased border radius */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+  }
 
+  .details-block summary {
+    padding: 20px 30px; /* Increased padding */
+    background-color: #f5f5f5;
+    cursor: pointer;
+    font-size: 24px; /* Increased font size */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the summary content */
+    text-align: center; /* Ensure text is centered */
+  }
+
+  .details-block summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .details-block summary::before {
+    content: '▶';
+    margin-right: 15px;
+    transition: transform 0.3s;
+  }
+
+  .details-block[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  .details-content {
+    padding: 2px; /* Increased padding */
+  }
+
+  .dataset-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the stats content */
+    font-size: 28px; /* Increased font size */
+    font-weight: bold;
+    margin-bottom: 20px; /* Add some space below the stats */
+  }
+
+  .dataset-stats img {
+    width: 60px; /* Increased icon size */
+    height: 60px;
+    margin-right: 20px;
+  }
     .video-container {
       margin-bottom: 20px; /* Space between videos */
     }
@@ -97,7 +151,7 @@
             <h1 class="title is-1 publication-title"><img id="logo" width="6%" src="./static/images/lvd_2m_icon.png" style="vertical-align: -10px;"> LVD-2M: <br>
              A Long-take Video Dataset with Temporally Dense Captions
           </h1>
-          <font size="4"><span style="color: red; font-weight: bold;">NeurIPS 2024 D&amp;B Track</span></font>
+          <font size="4"><span style="color: red; font-weight: bold;">NeurIPS 2024</span></font>
           <br>
           <div class="is-size-5 publication-authors">
             <span class="author-block has-text-centered">
@@ -133,6 +187,16 @@
                   <span>Code</span>
                   </a>
               </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://www.youtube.com/watch?v=EyOJ1onA-Qs"
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
 
             </div>
           </div>
@@ -143,144 +207,22 @@
 </section>
 
 
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container" style="max-width: 960px;">
-      <div id="results-carousel" class="carousel results-carousel">
-
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/450mJ-hwKWk.6_1_c.mov" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>The video captures an intense basketball game or practice session on an indoor court with distinctive orange, black, purple, and white color schemes. The players, dressed in athletic attire, engage in various actions such as dribbling, shooting, passing, defending, and interacting with each other. The court, equipped with multiple hoops, serves as a dynamic backdrop for the ongoing game, highlighting the competitive and active nature of the sport.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/-RCZ_gmjtLU.14_2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>The video depicts a snowboarder performing various maneuvers on a snow-covered slope. The snowboarder, dressed in a red jacket and black pants, is seen progressing from a crouched position to mid-air jumps and landings, all captured from a consistent side-angle perspective. The mountainous landscape with trees suggests the setting is a ski resort or mountainous area suitable for snowboarding, with clear skies and natural lighting.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/I-AmF6PRnOw.17_1_c.mov " type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>A person wearing a scuba diving suit and equipment is shown holding a large, vibrant orange fish with a prominent dorsal fin, likely a type of grouper or snapper, in a clear blue underwater environment. The video appears to be focused on the diver's interaction with the marine life, possibly for educational or recreational purposes.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/BlUTkf-_GTg.66_3.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>The video captures a cyclist performing a sequence of maneuvers at a skate park. The cyclist, wearing a helmet, is seen preparing to descend a ramp, executing the descent with speed and control, and landing safely at the bottom. The setting is consistent throughout, with the skate park visible in the background and the lighting suggesting a late afternoon or early evening timeframe. The video showcases the skill and excitement involved in cycling at a skate park.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/NDDDdh8-fZE.63_1_c.mov" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>The video depicts a baby in a white onesie exploring its surroundings. The baby is seated and then stands, gripping a white rail or handle. The baby's facial expressions suggest a curious and playful mood as it interacts with the object. The setting appears to be a child-friendly room with a bed and toys visible in the background. The camera maintains a consistent perspective, focusing on the baby's actions and expressions throughout the sequence.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/IKNKEewb_7o.62_1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>The video depicts a first-person perspective of a person riding a mountain bike on a dirt trail. The camera focuses on the handlebars, capturing the rider's hands gripping them tightly as they navigate turns and changes in the terrain. The blurred background suggests a natural, outdoor setting, likely a mountainous or hilly area, characteristic of a mountain biking trail. The video conveys a sense of speed and action through the changing angles of the handlebars and the continuous motion.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/dCcGU9o5ryk.105_0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>The video depicts a person learning to snowboard at an indoor snowboarding facility. The learner is wearing a blue jacket and is being assisted by another individual, both wearing snowboarding gear including helmets and goggles. The video shows the learner's progress, starting with the person holding the instructor's hand for support, then leaning forward as they begin to fall, and eventually falling onto the snow-covered ground, with the instructor remaining nearby to offer guidance.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <div class="card-image">
-              <video controls autoplay loop muted>
-                <source src="videos/dataset/SoPyKYtEel0.4_0.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <p>A video of a motorcycle ride on a winding road under a clear blue sky. The video is captured from the perspective of the motorcycle rider, with the handlebars and mirrors visible in each frame. The road curves gently to the left, and the background remains consistent throughout the sequence.</p>
-              </div>
-            </div>
-
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Demo Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/EyOJ1onA-Qs?si=wIn8msMHp796hGDD"
+                  frameborder="10" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -297,11 +239,17 @@
     <!--/ Abstract. -->
 
     <!-- Framework. -->
+  <details class="details-block is-centered" >
+      <summary>
+        <h2 class="title is-3 is-centered">Data Pipeline</h2>
+      </summary>
+
+    <div class="details-content">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Data Pipeline</h2>
+        <!-- <h2 class="title is-3">Data Pipeline</h2> -->
         <div class="content has-text-centered">
-          <img src="static/images/pipeline.png" alt="Framework" width="100%">
+          <img src="static/images/pipeline_2.png" alt="Framework" width="100%">
         </div>
         <div class="content has-text-centered">
           <p>
@@ -310,7 +258,7 @@
         </div>
 
         <div class="content has-text-centered">
-          <img src="static/images/caption_process.png" alt="Caption Framework" width="100%">
+          <img src="static/images/caption_process_2.png" alt="Caption Framework" width="100%">
         </div>
         <div class="content has-text-centered">
           <p>
@@ -320,6 +268,8 @@
 
 
       </div>
+    </div>
+    </details>
     </div>
     <!--/ Framework. -->
   </div>
@@ -386,7 +336,10 @@
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <h2 class="title is-3">Finetuning a T2V Diffusion Model</h2>
+      <h2 class="title is-3">
+        Extending a Diffusion-based T2V Model <br>for Longer Range on LVD-2M
+        <!-- Finetuning a T2V Diffusion Model -->
+      </h2>
     </div>
 
       <!-- First table -->
@@ -689,6 +642,155 @@
 </section>
  -->
 
+
+<section class="hero is-light is-small" id="Dataset Title">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-2">
+      <img src="./static/images/lvd_2m_icon.png" style="width:6%;vertical-align: middle" alt="Logo">
+      <span style="vertical-align: middle">
+        Gallery of Video-Text Pairs
+      </span>
+    </h1>
+  </div>
+</section>
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container" style="max-width: 960px;">
+      <div id="results-carousel" class="carousel results-carousel">
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/450mJ-hwKWk.6_1_c.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures an intense basketball game or practice session on an indoor court with distinctive orange, black, purple, and white color schemes. The players, dressed in athletic attire, engage in various actions such as dribbling, shooting, passing, defending, and interacting with each other. The court, equipped with multiple hoops, serves as a dynamic backdrop for the ongoing game, highlighting the competitive and active nature of the sport.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/-RCZ_gmjtLU.14_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a snowboarder performing various maneuvers on a snow-covered slope. The snowboarder, dressed in a red jacket and black pants, is seen progressing from a crouched position to mid-air jumps and landings, all captured from a consistent side-angle perspective. The mountainous landscape with trees suggests the setting is a ski resort or mountainous area suitable for snowboarding, with clear skies and natural lighting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/I-AmF6PRnOw.17_1_c.mov " type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>A person wearing a scuba diving suit and equipment is shown holding a large, vibrant orange fish with a prominent dorsal fin, likely a type of grouper or snapper, in a clear blue underwater environment. The video appears to be focused on the diver's interaction with the marine life, possibly for educational or recreational purposes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/BlUTkf-_GTg.66_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video captures a cyclist performing a sequence of maneuvers at a skate park. The cyclist, wearing a helmet, is seen preparing to descend a ramp, executing the descent with speed and control, and landing safely at the bottom. The setting is consistent throughout, with the skate park visible in the background and the lighting suggesting a late afternoon or early evening timeframe. The video showcases the skill and excitement involved in cycling at a skate park.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/NDDDdh8-fZE.63_1_c.mov" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a baby in a white onesie exploring its surroundings. The baby is seated and then stands, gripping a white rail or handle. The baby's facial expressions suggest a curious and playful mood as it interacts with the object. The setting appears to be a child-friendly room with a bed and toys visible in the background. The camera maintains a consistent perspective, focusing on the baby's actions and expressions throughout the sequence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/IKNKEewb_7o.62_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a first-person perspective of a person riding a mountain bike on a dirt trail. The camera focuses on the handlebars, capturing the rider's hands gripping them tightly as they navigate turns and changes in the terrain. The blurred background suggests a natural, outdoor setting, likely a mountainous or hilly area, characteristic of a mountain biking trail. The video conveys a sense of speed and action through the changing angles of the handlebars and the continuous motion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/dCcGU9o5ryk.105_0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>The video depicts a person learning to snowboard at an indoor snowboarding facility. The learner is wearing a blue jacket and is being assisted by another individual, both wearing snowboarding gear including helmets and goggles. The video shows the learner's progress, starting with the person holding the instructor's hand for support, then leaning forward as they begin to fall, and eventually falling onto the snow-covered ground, with the instructor remaining nearby to offer guidance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="card-image">
+              <video controls autoplay loop muted>
+                <source src="videos/dataset/SoPyKYtEel0.4_0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <p>A video of a motorcycle ride on a winding road under a clear blue sky. The video is captured from the perspective of the motorcycle rider, with the handlebars and mirrors visible in each frame. The road curves gently to the left, and the background remains consistent throughout the sequence.</p>
+              </div>
+            </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -702,6 +804,7 @@
 </code></pre>
   </div>
 </section>
+
 
 
 
