@@ -1,4 +1,4 @@
-# <img src="assets/images/lvd2m_icon_blue.png" style="vertical-align: -10px;" :height="50px" width="50px"> LVD-2M: A Long-take Video Dataset with Temporally Dense Captions
+# <img src="assets/images/lvd2m_icon_blue.png" style="vertical-align: -15px;" :height="50px" width="50px"> LVD-2M: A Long-take Video Dataset with Temporally Dense Captions
 
 Official Github repository of <br>
 [LVD-2M: A Long-take Video Dataset with Temporally Dense Captions]()
@@ -152,5 +152,13 @@ Here we list the projects that inspired and helped us to build LVD-2M.
 - [PySceneDetect](https://github.com/Breakthrough/PySceneDetect) and [pytube](https://github.com/pytube/pytube) provide effective tools for video data collection.
 
 ## Citation
+```bibtex
+@article{xiong2024lvd2m,
+      title={LVD-2M: A Long-take Video Dataset with Temporally Dense Captions}, 
+      author={Tianwei Xiong and Yuqing Wang and Daquan Zhou and Zhijie Lin and Jiashi Feng and Xihui Liu},
+      year={2024},
+      journal={arXiv preprint arXiv:2410.10816}
+}
+```
 
 
