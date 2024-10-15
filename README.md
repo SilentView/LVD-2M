@@ -16,12 +16,12 @@ Official Github repository of <br>
 *NeurIPS 2024 Track Datasets and Benchmarks*
 
 
-<!-- [![arXiv](https://img.shields.io/badge/arXiv-2402.19479-b31b1b.svg)]() -->
+[![arXiv](https://img.shields.io/badge/arXiv-2402.19479-b31b1b.svg)](https://arxiv.org/abs/2410.10816)
 [![Project Page](https://img.shields.io/badge/Project-Website-green)](https://silentview.github.io/LVD-2M/)
 
 ## News
 
-**[2024/10/]** The dataset, the research paper and the [project page](https://silentview.github.io/LVD-2M/) are released!
+**[2024/10/15]** The dataset, the research paper and the [project page](https://silentview.github.io/LVD-2M/) are released!
 
 
 
